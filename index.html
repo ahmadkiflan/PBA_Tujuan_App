@@ -417,52 +417,71 @@
             font-size: 0.74rem;
         }
 
-        .students-list {
-            display: flex;
-            padding: 1rem;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
+        .nav-pill a.active {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .src {
+            display: inline-block;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.66rem;
             color: var(--muted);
             border: 1px solid var(--border);
-            border-radius: 1rem;
-            margin-bottom: 22px;
-            list-style-type: none;
-            text-align: center;
+            border-radius: 999px;
+            padding: 2px 9px;
+            margin-left: 6px;
+            white-space: nowrap;
+            vertical-align: middle;
         }
 
-        .lecturer {
-            margin-bottom: 1rem;
+        cite .src {
+            margin-left: 0;
+            margin-top: 6px;
         }
 
-        .btn-wrapper {
-            display: flex;
-            justify-content: end;
-            margin-top: 1rem;
-            align-items: center;
+        .reflect {
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--muted);
         }
 
-        .btn {
-            border-radius: 1rem;
-            border: none;
-            color: white;
+        .reflect b {
+            color: var(--ink);
             font-family: var(--font-mono);
-            background: black;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .backtotop {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--ink);
+            color: var(--bg);
+            border: none;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+            z-index: 20;
         }
 
-        .visit-link {
-            padding: 0.5rem 0.8rem;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .icon {
-            font-size: 1rem;
+        .backtotop.show {
+            opacity: 1;
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -471,30 +490,30 @@
 
     <div class="nav">
         <nav class="nav-pill">
+            <a href="#profil">Profil</a>
             <a href="#formal">Formal</a>
             <a href="#ideal">Ideal</a>
             <a href="#filosofis">Filosofis</a>
             <a href="#praktis">Praktis</a>
             <a href="#kesimpulan">Kesimpulan</a>
-            <a href="#kesimpulan">Visit Modul</a>
         </nav>
     </div>
 
     <div class="wrap hero">
-
-
-
         <span class="eyebrow">Tugas Kelompok · Pembelajaran Bahasa Arab</span>
-        <ul class="students-list">
-            <li class="lecturer">Di bimbing oleh Pak Khabibie Muhammad Luthfi</li>
-            <li>Ahmad Kiflan Wafi</li>
-            <li>Boby Pahlevi</li>
-            <li>Ghifari Dilan</li>
-        </ul>
-
         <h1>Tujuan Pembelajaran<br>Bahasa Arab</h1>
         <p>Disusun dari dua wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta, dibaca melalui kerangka
             empat ragam tujuan PBA: ideal, formal, filosofis, dan praktis.</p>
+
+        <div
+            style="border:1px solid var(--border); border-radius:14px; padding:16px 18px; margin-bottom:28px; background:var(--bg-alt); font-size:0.86rem; color:var(--muted);">
+            <div style="margin-bottom:8px;"><span
+                    style="font-family:var(--font-mono); font-size:0.68rem; text-transform:uppercase; color:var(--ink);">Kelompok</span><br>Ahmad
+                Kiflan Wafi &middot; Pahlevi Bobby &middot; Ghifari Dilan</div>
+            <div><span
+                    style="font-family:var(--font-mono); font-size:0.68rem; text-transform:uppercase; color:var(--ink);">Dosen
+                    Pengampu</span><br>Khabibie Muhammad Luhfi</div>
+        </div>
 
         <div class="facts">
             <div class="fact"><b>2025</b><span>Mulai mengajar kembali</span></div>
@@ -505,6 +524,32 @@
     </div>
 
     <main class="wrap">
+
+        <section id="profil" class="tujuan">
+            <div class="card">
+                <div class="card-head">
+                    <div class="icon-badge" style="background:rgba(107,107,107,0.12); color:var(--muted);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="tag">Profil &amp; Metode</span>
+                        <h2>Sumber data wawancara</h2>
+                    </div>
+                </div>
+                <p class="sub">Konteks singkat sebelum masuk ke temuan per kategori.</p>
+                <p style="color:var(--muted); font-size:0.94rem;">Program bahasa Arab telah ada <b
+                        style="color:var(--ink);">sejak berdirinya MI Negeri Surakarta</b>. Bu Anindita mulai mengajar
+                    bahasa Arab di sekolah ini sejak Januari 2025 — sebelumnya ia sempat mengajar di tempat yang sama,
+                    resign, lalu kembali mengajar.<span class="src">Wawancara Boby</span></p>
+                <p style="color:var(--muted); font-size:0.94rem; margin-bottom:0;">Data disusun dari dua sesi wawancara
+                    terpisah dengan Bu Anindita, masing-masing membahas konteks umum-target kemampuan, dan tujuan
+                    kurikulum secara lebih spesifik.</p>
+            </div>
+        </section>
 
         <section id="formal" class="tujuan formal">
             <div class="card">
@@ -532,7 +577,8 @@
                         <div class="num">1</div>
                         <div>
                             <h3>Nasional</h3>
-                            <p>Sejak 2026, mengikuti Kurikulum Berbasis Cinta (KBC) sesuai aturan Kementerian Agama.</p>
+                            <p>Sejak 2026, mengikuti Kurikulum Berbasis Cinta (KBC) sesuai aturan Kementerian
+                                Agama.<span class="src">Wawancara Kiflan</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
@@ -540,15 +586,17 @@
                         <div>
                             <h3>Institusional</h3>
                             <p>Tiga jenis kelas — Tahfidz (±25–26 siswa), MIPA (±28), Reguler (±28–31) — dengan materi
-                                bahasa Arab yang disamakan.</p>
+                                bahasa Arab yang disamakan.<span class="src">Wawancara Boby</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
                         <div class="num">3</div>
                         <div>
                             <h3>Kurikuler</h3>
-                            <p>Kelas 1–3 menekankan mufradat dan isim isyarah; kelas 4–6 masuk tarkib, mubtada–khabar,
-                                kalam, dan qira'ah.</p>
+                            <p>Kelas 1–3 menekankan mufradat dan isim isyarah — dibagi per bab tiap semester mengikuti
+                                catatan Kemenag, misalnya bab tentang warna, rumah, hewan, atau kendaraan. Kelas 4–6
+                                masuk tarkib, mubtada–khabar, kalam, dan qira'ah, dengan materi mufradat yang jauh lebih
+                                kompleks.<span class="src">Wawancara Boby</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
@@ -556,15 +604,17 @@
                         <div>
                             <h3>Instruksional</h3>
                             <p>Penilaian memadukan tes tertulis dan praktik — misalnya menjelaskan alamat rumah lewat
-                                kitabah dan kalam.</p>
+                                kitabah dan kalam.<span class="src">Wawancara Kiflan</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="quote">
                     Kurikulumnya tidak bisa diimplementasikan penuh, karena kompetensi dan kenyataan di lapangan berbeda
                     — ada anak yang cepat, ada yang lambat.
-                    <cite>Anindita, guru bahasa Arab</cite>
+                    <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Kiflan</span></cite>
                 </div>
+                <div class="reflect"><b>Coba pikirkan</b>Menurutmu, kenapa kurikulum yang sama bisa sulit diterapkan
+                    rata ke semua siswa?</div>
             </div>
         </section>
 
@@ -599,7 +649,19 @@
                     Pembelajaran lebih menekankan penguasaan teknis, bukan berpikir kritis. Analisis teks ringan baru
                     muncul di kelas 6 untuk persiapan ujian madrasah. Kendala terbesarnya justru di ranah afektif —
                     minat siswa masih rendah.
+                    <span class="src">Wawancara Kiflan</span>
                 </div>
+                <div class="quote" style="margin-top:18px;">
+                    Kebanyakan anak kelas 4, 5, dan 6 sudah dilatih untuk bisa membaca bahasa Arab, tetapi ketika mereka
+                    berbicara, intonasinya masih seperti membaca Al-Qur'an.
+                    <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Boby</span></cite>
+                </div>
+                <p style="color:var(--muted); font-size:0.94rem; margin:14px 0 0;">Kitabah sebenarnya sudah masuk materi
+                    dan bisa menyesuaikan kebutuhan, tapi guru lebih menekankan kalam dan qira'ah untuk kelas 4–6 —
+                    karena di situlah tantangan terbesarnya justru muncul: siswa bisa membaca, tapi belum benar-benar
+                    bisa "berbicara".<span class="src">Wawancara Boby</span></p>
+                <div class="reflect"><b>Coba pikirkan</b>Kalau siswa sudah lancar membaca tapi belum lancar bicara,
+                    keterampilan apa yang sebenarnya belum tercapai?</div>
             </div>
         </section>
 
@@ -623,11 +685,13 @@
                 <div class="quote">
                     Cukup sulit dikaitkan dengan pemahaman konteks keislaman, karena tujuan siswa di sini adalah
                     pemahaman bahasa Arab secara lughowi saja.
-                    <cite>Anindita, guru bahasa Arab</cite>
+                    <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Kiflan</span></cite>
                 </div>
                 <p style="color:var(--muted); font-size:0.94rem; margin:18px 0 0;">Penyisipan nilai-nilai Islam
                     bergantung pada inisiatif masing-masing guru, bukan bagian yang dirancang sistematis dalam
-                    kurikulum.</p>
+                    kurikulum.<span class="src">Wawancara Boby</span></p>
+                <div class="reflect"><b>Coba pikirkan</b>Apakah wajar kalau nilai keislaman dalam pelajaran bahasa Arab
+                    bergantung pada masing-masing guru, bukan aturan sekolah?</div>
             </div>
         </section>
 
@@ -651,9 +715,12 @@
                     modal awal.</p>
                 <p style="color:var(--muted); font-size:0.94rem;">Lulusan tidak semuanya melanjutkan ke MTs atau
                     pesantren — ada juga yang masuk sekolah negeri. Targetnya sederhana: siswa MI lebih memahami
-                    mufradat dibanding anak yang tidak bersekolah di madrasah.</p>
-                <p style="color:var(--muted); font-size:0.94rem; margin-bottom:0;">Tidak ada ekstrakurikuler khusus —
-                    hanya jam tambahan materi ujian untuk kelas 6.</p>
+                    mufradat dibanding anak yang tidak bersekolah di madrasah.<span class="src">Wawancara Kiflan</span>
+                </p>
+                <p style="color:var(--muted); font-size:0.94rem;">Tidak ada ekstrakurikuler khusus — hanya jam tambahan
+                    materi ujian untuk kelas 6.<span class="src">Wawancara Kiflan</span></p>
+                <div class="reflect"><b>Coba pikirkan</b>Kalau tidak semua lulusan lanjut ke MTs atau pesantren,
+                    menurutmu seberapa penting target bahasa Arab di jenjang MI ini?</div>
             </div>
         </section>
 
@@ -684,20 +751,52 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="btn-wrapper">
-                <button class="btn">
-                    <a href="" class="visit-link">Visit Modul <span class="icon">&raquo;</span></a>
-                </button>
-            </div>
-
-
-
         </section>
 
     </main>
 
-    <footer>Disusun dari transkrip wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta.</footer>
+    <footer>
+        Disusun dari transkrip wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta.
+        <br><br>
+        <a href="https://claude.ai/artifact/Qw5g6dxMy8WmTouWQvbu8L"
+            style="display:inline-block; border:1px solid var(--border-strong); color:var(--ink); border-radius:999px; padding:8px 16px; text-decoration:none;">Lihat
+            modul teori PBA →</a>
+    </footer>
+
+    <button class="backtotop" id="backtotop" aria-label="Kembali ke atas">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6" />
+        </svg>
+    </button>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-pill a');
+        const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+        function updateActiveNav() {
+            const offset = 90;
+            let currentId = sections[0] ? sections[0].id : null;
+            for (const sec of sections) {
+                if (sec.getBoundingClientRect().top - offset <= 0) currentId = sec.id;
+            }
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + currentId));
+        }
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => { updateActiveNav(); ticking = false; });
+                ticking = true;
+            }
+        });
+        updateActiveNav();
+
+        const btt = document.getElementById('backtotop');
+        window.addEventListener('scroll', () => {
+            btt.classList.toggle('show', window.scrollY > 480);
+        });
+        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
 
 </body>
 
