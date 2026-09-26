@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Tujuan Pembelajaran Bahasa Arab — MI Negeri Surakarta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --bg-alt: #FAFAFA;
+            --ink: #0A0A0A;
+            --muted: #6B6B6B;
+            --border: #E6E6E6;
+            --border-strong: #0A0A0A;
+            --c-formal: #2563EB;
+            --c-formal-soft: rgba(37, 99, 235, 0.10);
+            --c-ideal: #16A34A;
+            --c-ideal-soft: rgba(22, 163, 74, 0.10);
+            --c-filosofis: #8B5CF6;
+            --c-filosofis-soft: rgba(139, 92, 246, 0.10);
+            --c-praktis: #EA580C;
+            --c-praktis-soft: rgba(234, 88, 12, 0.10);
+            --font-display: 'Space Grotesk', 'Inter', sans-serif;
+            --font-body: 'Inter', 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0A0A0A;
+                --bg-alt: #141414;
+                --ink: #FAFAFA;
+                --muted: #9A9A9A;
+                --border: #262626;
+                --border-strong: #FAFAFA;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0A0A0A;
+            --bg-alt: #141414;
+            --ink: #FAFAFA;
+            --muted: #9A9A9A;
+            --border: #262626;
+            --border-strong: #FAFAFA;
+        }
+
+        html {
+            scroll-padding-top: 64px;
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        .wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .nav {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            padding: 16px 12px;
+        }
+
+        .nav-pill {
+            display: flex;
+            gap: 4px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px;
+            overflow-x: auto;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-pill a {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-decoration: none;
+            color: var(--muted);
+            padding: 8px 14px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .nav-pill a:hover,
+        .nav-pill a:focus-visible {
+            background: var(--bg-alt);
+            color: var(--ink);
+        }
+
+        .hero {
+            padding: 48px 24px 8px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 5px 12px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin: 0 0 20px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 56ch;
+            margin: 0 0 32px;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 0 0 56px;
+        }
+
+        .fact {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px 14px;
+            background: var(--bg-alt);
+        }
+
+        .fact b {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+        }
+
+        .fact span {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        @media (max-width:560px) {
+            .facts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        section.tujuan {
+            padding: 8px 0 56px;
+        }
+
+        .card {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            background: var(--bg-alt);
+        }
+
+        .card-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .icon-badge {
+            flex: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-badge svg {
+            width: 23px;
+            height: 23px;
+        }
+
+        .formal .icon-badge {
+            background: var(--c-formal-soft);
+            color: var(--c-formal);
+        }
+
+        .ideal .icon-badge {
+            background: var(--c-ideal-soft);
+            color: var(--c-ideal);
+        }
+
+        .filosofis .icon-badge {
+            background: var(--c-filosofis-soft);
+            color: var(--c-filosofis);
+        }
+
+        .praktis .icon-badge {
+            background: var(--c-praktis-soft);
+            color: var(--c-praktis);
+        }
+
+        .tag {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(1.4rem, 3.2vw, 1.7rem);
+            letter-spacing: -0.01em;
+            margin: 0 0 4px;
+        }
+
+        .sub {
+            color: var(--muted);
+            margin: 0 0 26px;
+            max-width: 58ch;
+            font-size: 0.96rem;
+        }
+
+        .flow {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flow-item {
+            display: flex;
+            gap: 16px;
+            padding: 0 0 24px;
+            position: relative;
+        }
+
+        .flow-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .flow-item::after {
+            content: "";
+            position: absolute;
+            left: 13px;
+            top: 30px;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .flow-item:last-child::after {
+            display: none;
+        }
+
+        .num {
+            flex: none;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            border: 1px solid var(--c-formal);
+            color: var(--c-formal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            background: var(--bg);
+        }
+
+        .flow-item h3 {
+            margin: 2px 0 4px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .flow-item p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .quote {
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent, var(--border-strong));
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0 0;
+            background: var(--bg);
+            font-style: italic;
+        }
+
+        .quote cite {
+            display: block;
+            font-style: normal;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+
+        .formal .quote {
+            --accent: var(--c-formal);
+        }
+
+        .filosofis .quote {
+            --accent: var(--c-filosofis);
+        }
+
+        .chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin: 0 0 20px;
+        }
+
+        .chain span {
+            border: 1px solid var(--c-ideal);
+            color: var(--c-ideal);
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--bg);
+        }
+
+        .chain .arrow {
+            color: var(--muted);
+            border: none;
+            padding: 0;
+            background: none;
+        }
+
+        .gap-note {
+            border-top: 1px solid var(--border);
+            margin-top: 22px;
+            padding-top: 18px;
+            font-size: 0.94rem;
+        }
+
+        .gap-note b {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+            color: var(--c-ideal);
+        }
+
+        .closing .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .closing .card li {
+            display: flex;
+            gap: 12px;
+            padding: 14px 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.94rem;
+            color: var(--muted);
+        }
+
+        .closing .card li:first-child {
+            border-top: none;
+        }
+
+        .closing .card li b {
+            color: var(--ink);
+        }
+
+        .closing .icon-badge {
+            background: var(--bg);
+            border: 1px solid var(--border-strong);
+            color: var(--ink);
+        }
+
+        footer {
+            padding: 36px 24px 48px;
+            text-align: center;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <nav class="nav-pill">
+            <a href="#formal">Formal</a>
+            <a href="#ideal">Ideal</a>
+            <a href="#filosofis">Filosofis</a>
+            <a href="#praktis">Praktis</a>
+            <a href="#kesimpulan">Kesimpulan</a>
+        </nav>
+    </div>
+
+    <div class="wrap hero">
+        <span class="eyebrow">Tugas Kelompok · Pembelajaran Bahasa Arab</span>
+        <h1>Tujuan Pembelajaran<br>Bahasa Arab</h1>
+        <p>Disusun dari dua wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta, dibaca melalui kerangka
+            empat ragam tujuan PBA: ideal, formal, filosofis, dan praktis.</p>
+
+        <div class="facts">
+            <div class="fact"><b>2025</b><span>Mulai mengajar kembali</span></div>
+            <div class="fact"><b>1–6</b><span>Jenjang kelas</span></div>
+            <div class="fact"><b>3</b><span>Jenis kelas</span></div>
+            <div class="fact"><b>2</b><span>Guru bahasa Arab</span></div>
+        </div>
+    </div>
+
+    <main class="wrap">
+
+        <section id="formal" class="tujuan formal">
+            <div class="card">
+                <div class="card-head">
+                    <div class="icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 21h16" />
+                            <path d="M5 21V10" />
+                            <path d="M19 21V10" />
+                            <path d="M3 10l9-6 9 6" />
+                            <path d="M9 21v-7" />
+                            <path d="M15 21v-7" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="tag">Tujuan Formal</span>
+                        <h2>Hierarki dari negara sampai kelas</h2>
+                    </div>
+                </div>
+                <p class="sub">Dilihat dari lembaga yang menaunginya — bergerak dari kebijakan nasional sampai praktik
+                    harian di kelas.</p>
+                <div class="flow">
+                    <div class="flow-item">
+                        <div class="num">1</div>
+                        <div>
+                            <h3>Nasional</h3>
+                            <p>Sejak 2026, mengikuti Kurikulum Berbasis Cinta (KBC) sesuai aturan Kementerian Agama.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="num">2</div>
+                        <div>
+                            <h3>Institusional</h3>
+                            <p>Tiga jenis kelas — Tahfidz (±25–26 siswa), MIPA (±28), Reguler (±28–31) — dengan materi
+                                bahasa Arab yang disamakan.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="num">3</div>
+                        <div>
+                            <h3>Kurikuler</h3>
+                            <p>Kelas 1–3 menekankan mufradat dan isim isyarah; kelas 4–6 masuk tarkib, mubtada–khabar,
+                                kalam, dan qira'ah.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="num">4</div>
+                        <div>
+                            <h3>Instruksional</h3>
+                            <p>Penilaian memadukan tes tertulis dan praktik — misalnya menjelaskan alamat rumah lewat
+                                kitabah dan kalam.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote">
+                    Kurikulumnya tidak bisa diimplementasikan penuh, karena kompetensi dan kenyataan di lapangan berbeda
+                    — ada anak yang cepat, ada yang lambat.
+                    <cite>Anindita, guru bahasa Arab</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="ideal" class="tujuan ideal">
+            <div class="card">
+                <div class="card-head">
+                    <div class="icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <circle cx="12" cy="12" r="5" />
+                            <circle cx="12" cy="12" r="1" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="tag">Tujuan Ideal</span>
+                        <h2>Bertumpu pada kompetensi komunikatif</h2>
+                    </div>
+                </div>
+                <p class="sub">Ditinjau dari karakter ilmu bahasa: kompetensi komunikatif diajarkan lebih dulu,
+                    kompetensi kritis menyusul.</p>
+                <div class="chain">
+                    <span>Mufradat</span><span class="arrow">→</span>
+                    <span>Qira'ah</span><span class="arrow">→</span>
+                    <span>Kalam</span><span class="arrow">→</span>
+                    <span>Kitabah</span>
+                </div>
+                <p style="color:var(--muted); font-size:0.94rem; margin:0;">Tanpa penguasaan mufradat, siswa tidak bisa
+                    melangkah ke tiga keterampilan lainnya — urutan ini dipegang ketat di kelas.</p>
+                <div class="gap-note">
+                    <b>Celah yang muncul</b>
+                    Pembelajaran lebih menekankan penguasaan teknis, bukan berpikir kritis. Analisis teks ringan baru
+                    muncul di kelas 6 untuk persiapan ujian madrasah. Kendala terbesarnya justru di ranah afektif —
+                    minat siswa masih rendah.
+                </div>
+            </div>
+        </section>
+
+        <section id="filosofis" class="tujuan filosofis">
+            <div class="card">
+                <div class="card-head">
+                    <div class="icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="9" />
+                            <polygon points="14.5 9.5 13.2 13.2 9.5 14.5 10.8 10.8 14.5 9.5" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="tag">Tujuan Filosofis</span>
+                        <h2>Lughowi dulu, nilai keislaman menyusul</h2>
+                    </div>
+                </div>
+                <p class="sub">Ditinjau dari pandangan hidup di balik ilmu yang dipelajari — di sinilah jarak antara
+                    harapan dan praktik terasa paling jauh.</p>
+                <div class="quote">
+                    Cukup sulit dikaitkan dengan pemahaman konteks keislaman, karena tujuan siswa di sini adalah
+                    pemahaman bahasa Arab secara lughowi saja.
+                    <cite>Anindita, guru bahasa Arab</cite>
+                </div>
+                <p style="color:var(--muted); font-size:0.94rem; margin:18px 0 0;">Penyisipan nilai-nilai Islam
+                    bergantung pada inisiatif masing-masing guru, bukan bagian yang dirancang sistematis dalam
+                    kurikulum.</p>
+            </div>
+        </section>
+
+        <section id="praktis" class="tujuan praktis">
+            <div class="card">
+                <div class="card-head">
+                    <div class="icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2.5" y="7.5" width="19" height="13" rx="2.2" />
+                            <path d="M8.5 7.5V5.8a1.8 1.8 0 0 1 1.8-1.8h3.4a1.8 1.8 0 0 1 1.8 1.8v1.7" />
+                            <path d="M2.5 13h19" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="tag">Tujuan Praktis</span>
+                        <h2>Bekal dasar, bukan capaian akhir</h2>
+                    </div>
+                </div>
+                <p class="sub">Ditinjau dari ke mana siswa melangkah setelah lulus — bukan profesi siap pakai, melainkan
+                    modal awal.</p>
+                <p style="color:var(--muted); font-size:0.94rem;">Lulusan tidak semuanya melanjutkan ke MTs atau
+                    pesantren — ada juga yang masuk sekolah negeri. Targetnya sederhana: siswa MI lebih memahami
+                    mufradat dibanding anak yang tidak bersekolah di madrasah.</p>
+                <p style="color:var(--muted); font-size:0.94rem; margin-bottom:0;">Tidak ada ekstrakurikuler khusus —
+                    hanya jam tambahan materi ujian untuk kelas 6.</p>
+            </div>
+        </section>
+
+        <section id="kesimpulan" class="tujuan closing">
+            <div class="card">
+                <div class="card-head">
+                    <div class="icon-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4" />
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11" />
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="tag">Kesimpulan</span>
+                        <h2>Benang merah keempat tujuan</h2>
+                    </div>
+                </div>
+                <p class="sub">Yang paling terealisasi, dan yang masih jadi pekerjaan rumah.</p>
+                <ul>
+                    <li><span><b>Formal &amp; Ideal</b> — sudah berjalan cukup rapi, mengikuti struktur Kemenag dan
+                            urutan keterampilan bahasa yang jelas.</span></li>
+                    <li><span><b>Filosofis</b> dan kompetensi kritis masih jadi celah terbesar antara teori kurikulum
+                            dan praktik di kelas.</span></li>
+                    <li><span><b>Kendala utama:</b> minat siswa yang rendah, dan sarana yang masih sebatas buku dan
+                            lembar soal.</span></li>
+                    <li><span><b>Harapan guru:</b> setidaknya setelah lulus, siswa bisa berbicara bahasa Arab.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>Disusun dari transkrip wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta.</footer>
+
+</body>
+
+</html>
