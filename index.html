@@ -87,15 +87,17 @@
             z-index: 10;
             padding: 14px 16px;
             background: var(--bg);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-bar {
-            max-width: 760px;
+            max-width: 800px;
             margin: 0 auto;
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 12px;
         }
 
         .nav-menu {
@@ -108,7 +110,7 @@
             justify-content: center;
             gap: 8px;
             border: 1px solid var(--border);
-            border-radius: 0.8rem;
+            border-radius: 999px;
             padding: 9px 16px;
             background: var(--bg);
             font-family: var(--font-mono);
@@ -152,10 +154,6 @@
         }
 
         .theme-toggle {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
             flex: none;
             width: 38px;
             height: 38px;
@@ -175,17 +173,6 @@
         }
 
         @media (max-width:680px) {
-            .nav-bar {
-                justify-content: space-between;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .theme-toggle {
-                position: static;
-                transform: none;
-            }
-
             .nav-toggle {
                 display: flex;
             }
@@ -314,22 +301,61 @@
             z-index: 50;
         }
 
-        section.tujuan {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity .6s ease, transform .6s ease;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
         }
 
-        section.tujuan.in {
-            opacity: 1;
-            transform: none;
+        section.tujuan {
+            animation: fadeInUp .5s ease both;
+        }
+
+        section.tujuan:nth-of-type(2) {
+            animation-delay: .05s;
+        }
+
+        section.tujuan:nth-of-type(3) {
+            animation-delay: .1s;
+        }
+
+        section.tujuan:nth-of-type(4) {
+            animation-delay: .15s;
+        }
+
+        section.tujuan:nth-of-type(5) {
+            animation-delay: .2s;
+        }
+
+        section.tujuan:nth-of-type(6) {
+            animation-delay: .25s;
         }
 
         @media (prefers-reduced-motion: reduce) {
             section.tujuan {
-                transition: none;
+                animation: none;
                 opacity: 1;
                 transform: none;
+            }
+        }
+
+        @media (min-width:900px) {
+            .wrap {
+                max-width: 800px;
+            }
+
+            .card {
+                padding: 38px;
+            }
+
+            .hero h1 {
+                font-size: 3.1rem;
             }
         }
 
@@ -653,9 +679,8 @@
             <div class="nav-menu">
                 <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Buka menu navigasi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                        <line x1="4" y1="7" x2="20" y2="7" />
-                        <line x1="4" y1="12" x2="20" y2="12" />
-                        <line x1="4" y1="17" x2="20" y2="17" />
+                        <line x1="4" y1="8" x2="20" y2="8" />
+                        <line x1="4" y1="16" x2="20" y2="16" />
                     </svg>
                 </button>
                 <nav class="nav-pill" id="navPill">
@@ -715,11 +740,15 @@
                 <p class="sub">Konteks singkat sebelum masuk ke temuan per kategori.</p>
                 <p style="color:var(--muted); font-size:0.94rem;">Program bahasa Arab telah ada <b
                         style="color:var(--ink);">sejak berdirinya MI Negeri Surakarta</b>. Bu Anindita mulai mengajar
-                    bahasa Arab di sekolah ini sejak Januari 2025 — sebelumnya ia sempat mengajar di tempat yang sama,
-                    resign, lalu kembali mengajar.<span class="src">Wawancara Boby</span></p>
+                    bahasa Arab
+                    di sekolah ini sejak Januari 2025 — sebelumnya ia sempat mengajar di tempat yang sama, resign, lalu
+                    kembali
+                    mengajar.<span class="src">Wawancara Boby</span></p>
                 <p style="color:var(--muted); font-size:0.94rem; margin-bottom:0;">Data disusun dari dua sesi wawancara
-                    terpisah dengan Bu Anindita, masing-masing membahas konteks umum-target kemampuan, dan tujuan
-                    kurikulum secara lebih spesifik.</p>
+                    terpisah
+                    dengan Bu Anindita, masing-masing membahas konteks umum-target kemampuan, dan tujuan kurikulum
+                    secara lebih
+                    spesifik.</p>
             </div>
         </section>
 
@@ -743,7 +772,8 @@
                     </div>
                 </div>
                 <p class="sub">Dilihat dari lembaga yang menaunginya — bergerak dari kebijakan nasional sampai praktik
-                    harian di kelas.</p>
+                    harian di
+                    kelas.</p>
                 <div class="flow">
                     <div class="flow-item">
                         <div class="num">1</div>
@@ -758,7 +788,8 @@
                         <div>
                             <h3>Institusional</h3>
                             <p>Tiga jenis kelas — Tahfidz (±25–26 siswa), MIPA (±28), Reguler (±28–31) — dengan materi
-                                bahasa Arab yang disamakan.<span class="src">Wawancara Boby</span></p>
+                                bahasa Arab
+                                yang disamakan.<span class="src">Wawancara Boby</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
@@ -766,8 +797,10 @@
                         <div>
                             <h3>Kurikuler</h3>
                             <p>Kelas 1–3 menekankan mufradat dan isim isyarah — dibagi per bab tiap semester mengikuti
-                                catatan Kemenag, misalnya bab tentang warna, rumah, hewan, atau kendaraan. Kelas 4–6
-                                masuk tarkib, mubtada–khabar, kalam, dan qira'ah, dengan materi mufradat yang jauh lebih
+                                catatan
+                                Kemenag, misalnya bab tentang warna, rumah, hewan, atau kendaraan. Kelas 4–6 masuk
+                                tarkib,
+                                mubtada–khabar, kalam, dan qira'ah, dengan materi mufradat yang jauh lebih
                                 kompleks.<span class="src">Wawancara Boby</span></p>
                         </div>
                     </div>
@@ -776,17 +809,20 @@
                         <div>
                             <h3>Instruksional</h3>
                             <p>Penilaian memadukan tes tertulis dan praktik — misalnya menjelaskan alamat rumah lewat
-                                kitabah dan kalam.<span class="src">Wawancara Kiflan</span></p>
+                                kitabah dan
+                                kalam.<span class="src">Wawancara Kiflan</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="quote">
                     Kurikulumnya tidak bisa diimplementasikan penuh, karena kompetensi dan kenyataan di lapangan berbeda
-                    — ada anak yang cepat, ada yang lambat.
+                    — ada
+                    anak yang cepat, ada yang lambat.
                     <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Kiflan</span></cite>
                 </div>
                 <div class="reflect"><b>Coba pikirkan</b>Menurutmu, kenapa kurikulum yang sama bisa sulit diterapkan
-                    rata ke semua siswa?</div>
+                    rata ke
+                    semua siswa?</div>
             </div>
         </section>
 
@@ -807,7 +843,8 @@
                     </div>
                 </div>
                 <p class="sub">Ditinjau dari karakter ilmu bahasa: kompetensi komunikatif diajarkan lebih dulu,
-                    kompetensi kritis menyusul.</p>
+                    kompetensi
+                    kritis menyusul.</p>
                 <div class="chain">
                     <span>Mufradat</span><span class="arrow">→</span>
                     <span>Qira'ah</span><span class="arrow">→</span>
@@ -819,8 +856,10 @@
                 <div class="gap-note">
                     <b>Celah yang muncul</b>
                     Pembelajaran lebih menekankan penguasaan teknis, bukan berpikir kritis. Analisis teks ringan baru
-                    muncul di kelas 6 untuk persiapan ujian madrasah. Kendala terbesarnya justru di ranah afektif —
-                    minat siswa masih rendah.
+                    muncul di
+                    kelas 6 untuk persiapan ujian madrasah. Kendala terbesarnya justru di ranah afektif — minat siswa
+                    masih
+                    rendah.
                     <span class="src">Wawancara Kiflan</span>
                 </div>
                 <div class="quote" style="margin-top:18px;">
@@ -829,11 +868,14 @@
                     <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Boby</span></cite>
                 </div>
                 <p style="color:var(--muted); font-size:0.94rem; margin:14px 0 0;">Kitabah sebenarnya sudah masuk materi
-                    dan bisa menyesuaikan kebutuhan, tapi guru lebih menekankan kalam dan qira'ah untuk kelas 4–6 —
-                    karena di situlah tantangan terbesarnya justru muncul: siswa bisa membaca, tapi belum benar-benar
-                    bisa "berbicara".<span class="src">Wawancara Boby</span></p>
+                    dan
+                    bisa menyesuaikan kebutuhan, tapi guru lebih menekankan kalam dan qira'ah untuk kelas 4–6 — karena
+                    di situlah
+                    tantangan terbesarnya justru muncul: siswa bisa membaca, tapi belum benar-benar bisa
+                    "berbicara".<span class="src">Wawancara Boby</span></p>
                 <div class="reflect"><b>Coba pikirkan</b>Kalau siswa sudah lancar membaca tapi belum lancar bicara,
-                    keterampilan apa yang sebenarnya belum tercapai?</div>
+                    keterampilan
+                    apa yang sebenarnya belum tercapai?</div>
             </div>
         </section>
 
@@ -853,15 +895,18 @@
                     </div>
                 </div>
                 <p class="sub">Ditinjau dari pandangan hidup di balik ilmu yang dipelajari — di sinilah jarak antara
-                    harapan dan praktik terasa paling jauh.</p>
+                    harapan dan
+                    praktik terasa paling jauh.</p>
                 <div class="quote">
                     Cukup sulit dikaitkan dengan pemahaman konteks keislaman, karena tujuan siswa di sini adalah
-                    pemahaman bahasa Arab secara lughowi saja.
+                    pemahaman bahasa
+                    Arab secara lughowi saja.
                     <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Kiflan</span></cite>
                 </div>
                 <p style="color:var(--muted); font-size:0.94rem; margin:18px 0 0;">Penyisipan nilai-nilai Islam
-                    bergantung pada inisiatif masing-masing guru, bukan bagian yang dirancang sistematis dalam
-                    kurikulum.<span class="src">Wawancara Boby</span></p>
+                    bergantung pada
+                    inisiatif masing-masing guru, bukan bagian yang dirancang sistematis dalam kurikulum.<span
+                        class="src">Wawancara Boby</span></p>
                 <div class="reflect"><b>Coba pikirkan</b>Apakah wajar kalau nilai keislaman dalam pelajaran bahasa Arab
                     bergantung pada masing-masing guru, bukan aturan sekolah?</div>
             </div>
@@ -884,15 +929,19 @@
                     </div>
                 </div>
                 <p class="sub">Ditinjau dari ke mana siswa melangkah setelah lulus — bukan profesi siap pakai, melainkan
-                    modal awal.</p>
+                    modal
+                    awal.</p>
                 <p style="color:var(--muted); font-size:0.94rem;">Lulusan tidak semuanya melanjutkan ke MTs atau
-                    pesantren — ada juga yang masuk sekolah negeri. Targetnya sederhana: siswa MI lebih memahami
-                    mufradat dibanding anak yang tidak bersekolah di madrasah.<span class="src">Wawancara Kiflan</span>
-                </p>
+                    pesantren — ada
+                    juga yang masuk sekolah negeri. Targetnya sederhana: siswa MI lebih memahami mufradat dibanding anak
+                    yang
+                    tidak bersekolah di madrasah.<span class="src">Wawancara Kiflan</span></p>
                 <p style="color:var(--muted); font-size:0.94rem;">Tidak ada ekstrakurikuler khusus — hanya jam tambahan
-                    materi ujian untuk kelas 6.<span class="src">Wawancara Kiflan</span></p>
+                    materi
+                    ujian untuk kelas 6.<span class="src">Wawancara Kiflan</span></p>
                 <div class="reflect"><b>Coba pikirkan</b>Kalau tidak semua lulusan lanjut ke MTs atau pesantren,
-                    menurutmu seberapa penting target bahasa Arab di jenjang MI ini?</div>
+                    menurutmu
+                    seberapa penting target bahasa Arab di jenjang MI ini?</div>
             </div>
         </section>
 
@@ -914,11 +963,14 @@
                 <p class="sub">Yang paling terealisasi, dan yang masih jadi pekerjaan rumah.</p>
                 <ul>
                     <li><span><b>Formal &amp; Ideal</b> — sudah berjalan cukup rapi, mengikuti struktur Kemenag dan
-                            urutan keterampilan bahasa yang jelas.</span></li>
+                            urutan
+                            keterampilan bahasa yang jelas.</span></li>
                     <li><span><b>Filosofis</b> dan kompetensi kritis masih jadi celah terbesar antara teori kurikulum
-                            dan praktik di kelas.</span></li>
+                            dan praktik
+                            di kelas.</span></li>
                     <li><span><b>Kendala utama:</b> minat siswa yang rendah, dan sarana yang masih sebatas buku dan
-                            lembar soal.</span></li>
+                            lembar
+                            soal.</span></li>
                     <li><span><b>Harapan guru:</b> setidaknya setelah lulus, siswa bisa berbicara bahasa Arab.</span>
                     </li>
                 </ul>
@@ -1012,19 +1064,6 @@
         });
         updateActiveNav();
         updateProgressBar();
-
-        // Reveal saat scroll
-        const revealEls = document.querySelectorAll('section.tujuan');
-        if ('IntersectionObserver' in window) {
-            const revealIO = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } });
-            }, { threshold: 0.12 });
-            revealEls.forEach(el => revealIO.observe(el));
-        } else {
-            revealEls.forEach(el => el.classList.add('in'));
-        }
-        // Pengaman: pastikan semua konten tetap muncul meski observer gagal/tertunda
-        setTimeout(() => revealEls.forEach(el => el.classList.add('in')), 2500);
 
         const btt = document.getElementById('backtotop');
         window.addEventListener('scroll', () => {
