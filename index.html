@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script>document.documentElement.classList.add('js'); setTimeout(function () { document.documentElement.classList.add('reveal-failsafe') }, 2500);</script>
     <title>Tujuan Pembelajaran Bahasa Arab — MI Negeri Surakarta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,8 +39,18 @@
             --fs-body: clamp(0.94rem, 0.9rem + 0.2vw, 1.02rem);
             --fs-small: clamp(0.86rem, 0.83rem + 0.15vw, 0.94rem);
             --fs-caption: clamp(0.8rem, 0.78rem + 0.1vw, 0.86rem);
-            --fs-mono: clamp(0.74rem, 0.72rem + 0.1vw, 0.8rem);
-            --fs-micro: clamp(0.68rem, 0.66rem + 0.08vw, 0.74rem);
+            --fs-mono: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+            --fs-micro: clamp(0.72rem, 0.7rem + 0.08vw, 0.78rem);
+            --wrap-max: 720px;
+            /* warna aksen aman untuk teks (kontras >= 4.5:1) */
+            --t-formal: #2563EB;
+            --t-ideal: #15803D;
+            --t-filosofis: #7C3AED;
+            --t-praktis: #C2410C;
+            --aurora-a: rgba(37, 99, 235, 0.20);
+            --aurora-b: rgba(139, 92, 246, 0.18);
+            --aurora-c: rgba(22, 163, 74, 0.10);
+            color-scheme: light;
             box-sizing: border-box;
             padding-top: env(safe-area-inset-top, 0px);
             padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -53,6 +64,14 @@
                 --muted: #9A9A9A;
                 --border: #262626;
                 --border-strong: #FAFAFA;
+                --t-formal: #60A5FA;
+                --t-ideal: #4ADE80;
+                --t-filosofis: #A78BFA;
+                --t-praktis: #FB923C;
+                --aurora-a: rgba(59, 130, 246, 0.26);
+                --aurora-b: rgba(167, 139, 250, 0.22);
+                --aurora-c: rgba(74, 222, 128, 0.10);
+                color-scheme: dark;
             }
         }
 
@@ -63,6 +82,14 @@
             --muted: #9A9A9A;
             --border: #262626;
             --border-strong: #FAFAFA;
+            --t-formal: #60A5FA;
+            --t-ideal: #4ADE80;
+            --t-filosofis: #A78BFA;
+            --t-praktis: #FB923C;
+            --aurora-a: rgba(59, 130, 246, 0.26);
+            --aurora-b: rgba(167, 139, 250, 0.22);
+            --aurora-c: rgba(74, 222, 128, 0.10);
+            color-scheme: dark;
         }
 
         html {
@@ -86,7 +113,7 @@
         }
 
         .wrap {
-            max-width: 720px;
+            max-width: var(--wrap-max);
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -99,7 +126,7 @@
             position: sticky;
             top: env(safe-area-inset-top, 0px);
             z-index: 30;
-            padding: 14px 16px;
+            padding: 14px 0;
             background: color-mix(in srgb, var(--bg) 78%, transparent);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -112,7 +139,8 @@
         }
 
         .nav-bar {
-            max-width: 800px;
+            max-width: var(--wrap-max);
+            padding: 0 24px;
             margin: 0 auto;
             position: relative;
             display: flex;
@@ -269,7 +297,7 @@
                 display: none;
                 position: absolute;
                 top: calc(100% + 22px);
-                left: 0;
+                left: 24px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 2px;
@@ -353,133 +381,26 @@
             padding: 8px 0 56px;
         }
 
-        .card {
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            background: var(--bg-alt);
-            transition: transform .45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .45s cubic-bezier(0.4, 0, 0.2, 1), border-color .3s ease;
-        }
-
-        .card:hover,
-        .card.spotlight {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.10);
-            border-color: var(--border-strong);
-        }
-
-        @media (prefers-color-scheme: dark) {
-
-            :root:not([data-theme="light"]) .card:hover,
-            :root:not([data-theme="light"]) .card.spotlight {
-                box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
-            }
-        }
-
-        :root[data-theme="dark"] .card:hover,
-        :root[data-theme="dark"] .card.spotlight {
-            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .bg-glow {
-            position: fixed;
-            top: -160px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 640px;
-            height: 640px;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.05), transparent 70%);
-            filter: blur(10px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) .bg-glow {
-                background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
-            }
-        }
-
-        :root[data-theme="dark"] .bg-glow {
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
-        }
 
         .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
-            height: 3px;
+            height: 2px;
             background: var(--ink);
             width: 0%;
             z-index: 50;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        section.tujuan {
-            animation: fadeInUp .5s ease both;
-        }
-
-        section.tujuan:nth-of-type(2) {
-            animation-delay: .05s;
-        }
-
-        section.tujuan:nth-of-type(3) {
-            animation-delay: .1s;
-        }
-
-        section.tujuan:nth-of-type(4) {
-            animation-delay: .15s;
-        }
-
-        section.tujuan:nth-of-type(5) {
-            animation-delay: .2s;
-        }
-
-        section.tujuan:nth-of-type(6) {
-            animation-delay: .25s;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            section.tujuan {
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }
+            transition: background-color .4s ease;
         }
 
         @media (min-width:900px) {
-            .wrap {
-                max-width: 800px;
+            :root {
+                --wrap-max: 800px;
             }
 
             .card {
                 padding: 38px;
             }
-        }
-
-        .section-indicator {
-            position: fixed;
-            left: 18px;
-            bottom: 18px;
-            font-family: var(--font-mono);
-            font-size: var(--fs-micro);
-            color: var(--muted);
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 7px 13px;
-            z-index: 20;
         }
 
         .card-head {
@@ -506,22 +427,22 @@
 
         .formal .icon-badge {
             background: var(--c-formal-soft);
-            color: var(--c-formal);
+            color: var(--t-formal);
         }
 
         .ideal .icon-badge {
             background: var(--c-ideal-soft);
-            color: var(--c-ideal);
+            color: var(--t-ideal);
         }
 
         .filosofis .icon-badge {
             background: var(--c-filosofis-soft);
-            color: var(--c-filosofis);
+            color: var(--t-filosofis);
         }
 
         .praktis .icon-badge {
             background: var(--c-praktis-soft);
-            color: var(--c-praktis);
+            color: var(--t-praktis);
         }
 
         .tag {
@@ -583,8 +504,8 @@
             width: 27px;
             height: 27px;
             border-radius: 50%;
-            border: 1px solid var(--c-formal);
-            color: var(--c-formal);
+            border: 1px solid var(--t-formal);
+            color: var(--t-formal);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -625,11 +546,11 @@
         }
 
         .formal .quote {
-            --accent: var(--c-formal);
+            --accent: var(--t-formal);
         }
 
         .filosofis .quote {
-            --accent: var(--c-filosofis);
+            --accent: var(--t-filosofis);
         }
 
         .chain {
@@ -641,8 +562,8 @@
         }
 
         .chain span {
-            border: 1px solid var(--c-ideal);
-            color: var(--c-ideal);
+            border: 1px solid var(--t-ideal);
+            color: var(--t-ideal);
             padding: 7px 14px;
             border-radius: 999px;
             font-size: var(--fs-small);
@@ -670,7 +591,7 @@
             text-transform: uppercase;
             display: block;
             margin-bottom: 8px;
-            color: var(--c-ideal);
+            color: var(--t-ideal);
         }
 
         .closing .card ul {
@@ -708,24 +629,6 @@
             color: var(--muted);
             font-family: var(--font-mono);
             font-size: var(--fs-mono);
-        }
-
-        .src {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: var(--fs-micro);
-            color: var(--muted);
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 2px 9px;
-            margin-left: 6px;
-            white-space: nowrap;
-            vertical-align: middle;
-        }
-
-        cite .src {
-            margin-left: 0;
-            margin-top: 6px;
         }
 
         .reflect {
@@ -771,14 +674,365 @@
             opacity: 1;
             pointer-events: auto;
         }
+
+        /* ===== Penyempurnaan: kartu beraksen, hero, reveal, aksesibilitas ===== */
+        ::selection {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--t-formal);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 16px;
+            top: -64px;
+            z-index: 100;
+            background: var(--ink);
+            color: var(--bg);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: var(--fs-mono);
+            text-decoration: none;
+            transition: top .2s ease;
+        }
+
+        .skip-link:focus {
+            top: 12px;
+        }
+
+        .nav:focus-within {
+            transform: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-ext {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: var(--fs-mono);
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 0;
+            transition: color .2s ease;
+        }
+
+        .nav-ext svg {
+            transition: transform .25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nav-ext:hover,
+        .nav-ext:focus-visible {
+            color: var(--ink);
+        }
+
+        .nav-ext:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        body {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .bg-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 640px;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+            background: radial-gradient(380px 210px at 55% 58%, var(--aurora-c), transparent 70%);
+            -webkit-mask-image: linear-gradient(#000 45%, transparent);
+            mask-image: linear-gradient(#000 45%, transparent);
+        }
+
+        .bg-glow::before,
+        .bg-glow::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(72px);
+        }
+
+        .bg-glow::before {
+            width: 520px;
+            height: 360px;
+            left: 6%;
+            top: -70px;
+            background: var(--aurora-a);
+        }
+
+        .bg-glow::after {
+            width: 460px;
+            height: 340px;
+            right: 4%;
+            top: 30px;
+            background: var(--aurora-b);
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .hero>* {
+            animation: rise .8s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .hero> :nth-child(1) {
+            animation-delay: .05s;
+        }
+
+        .hero> :nth-child(2) {
+            animation-delay: .12s;
+        }
+
+        .hero> :nth-child(3) {
+            animation-delay: .2s;
+        }
+
+        .hero> :nth-child(4) {
+            animation-delay: .28s;
+        }
+
+        .hero> :nth-child(5) {
+            animation-delay: .36s;
+        }
+
+        .hero> :nth-child(6) {
+            animation-delay: .44s;
+        }
+
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: -6px 0 28px;
+        }
+
+        .hero-chips a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: var(--fs-mono);
+            color: var(--ink);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 7px 14px;
+            background: var(--bg);
+            transition: border-color .25s ease, transform .25s ease;
+        }
+
+        .hero-chips a:hover {
+            border-color: var(--ink);
+            transform: translateY(-1px);
+        }
+
+        .hero-chips i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .reveal {
+            transition: opacity .7s cubic-bezier(0.22, 1, 0.36, 1), transform .7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .js .reveal:not(.in) {
+            opacity: 0;
+            transform: translateY(22px);
+        }
+
+        .reveal-failsafe .reveal:not(.in) {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .card {
+            --accent: var(--muted);
+            position: relative;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            background: var(--bg-alt);
+            transition: transform .45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .45s cubic-bezier(0.22, 1, 0.36, 1), border-color .35s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 28px;
+            right: 28px;
+            height: 2px;
+            border-radius: 0 0 3px 3px;
+            background: var(--accent);
+            opacity: .85;
+        }
+
+        #formal .card {
+            --accent: var(--t-formal);
+        }
+
+        #ideal .card {
+            --accent: var(--t-ideal);
+        }
+
+        #filosofis .card {
+            --accent: var(--t-filosofis);
+        }
+
+        #praktis .card {
+            --accent: var(--t-praktis);
+        }
+
+        @supports (background: color-mix(in srgb, red 10%, blue)) {
+            .card {
+                background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, var(--bg-alt)) 0, var(--bg-alt) 160px);
+            }
+        }
+
+        .card.spotlight {
+            border-color: var(--border-strong);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        @supports (background: color-mix(in srgb, red 10%, blue)) {
+            .card.spotlight {
+                border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+                box-shadow: 0 12px 34px color-mix(in srgb, var(--accent) 16%, transparent);
+            }
+        }
+
+        @media (hover:hover) {
+            .card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 16px 38px rgba(0, 0, 0, 0.10);
+            }
+        }
+
+        @media (min-width:900px) {
+            .card {
+                padding: 38px;
+            }
+        }
+
+        @media (max-width:560px) {
+            .card {
+                padding: 24px 20px;
+            }
+
+            .card::before {
+                left: 20px;
+                right: 20px;
+            }
+        }
+
+        .backtotop {
+            visibility: hidden;
+            transition: opacity .2s, visibility .2s;
+        }
+
+        .backtotop.show {
+            visibility: visible;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+            .js .reveal:not(.in) {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .src {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--ink);
+            color: var(--ink);
+            font-family: var(--font-mono);
+            font-size: var(--fs-micro);
+            font-weight: 500;
+            line-height: 1;
+            vertical-align: middle;
+            cursor: help;
+        }
+
+        .src[data-w="k"] {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            align-items: center;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--border);
+            font-size: var(--fs-caption);
+            color: var(--muted);
+        }
+
+        .legend>span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .legend .src {
+            margin: 0 8px 0 0;
+            cursor: default;
+        }
     </style>
 </head>
 
 <body>
 
+    <a class="skip-link" href="#main">Lewati ke konten</a>
     <div class="bg-glow" aria-hidden="true"></div>
     <div class="progress-bar" id="progressBar"></div>
-    <div class="section-indicator" id="sectionIndicator">1 / 1</div>
 
     <div class="nav">
         <div class="nav-bar">
@@ -796,27 +1050,38 @@
                     <a href="#kesimpulan">Kesimpulan</a>
                 </nav>
             </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode terang/gelap"></button>
+            <div class="nav-right">
+                <a class="nav-ext" href="https://claude.ai/artifact/Qw5g6dxMy8WmTouWQvbu8L" target="_blank"
+                    rel="noopener">Modul
+                    teori <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 17L17 7M8 7h9v9" />
+                    </svg></a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Ganti mode terang/gelap"></button>
+            </div>
         </div>
     </div>
 
     <div class="wrap hero">
-        <span class="eyebrow">Wawancara · Tujuan Pembelajaran Bahasa Arab</span>
-        <h1>Hasil Wawancara <br> Tujuan PBA</h1>
+        <span class="eyebrow">Tugas Kelompok · Pembelajaran Bahasa Arab</span>
+        <h1>Tujuan Pembelajaran<br>Bahasa Arab</h1>
         <p>Disusun dari dua wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta, dibaca melalui kerangka
             empat ragam tujuan PBA: ideal, formal, filosofis, dan praktis.</p>
+        <div class="hero-chips" aria-label="Empat ragam tujuan PBA">
+            <a href="#formal"><i style="background:var(--t-formal)"></i>Formal</a>
+            <a href="#ideal"><i style="background:var(--t-ideal)"></i>Ideal</a>
+            <a href="#filosofis"><i style="background:var(--t-filosofis)"></i>Filosofis</a>
+            <a href="#praktis"><i style="background:var(--t-praktis)"></i>Praktis</a>
+        </div>
 
         <div
             style="border:1px solid var(--border); border-radius:14px; padding:16px 18px; margin-bottom:28px; background:var(--bg-alt); font-size:var(--fs-small); color:var(--muted);">
             <div style="margin-bottom:8px;"><span
                     style="font-family:var(--font-mono); font-size:var(--fs-micro); text-transform:uppercase; color:var(--ink);">Kelompok</span><br>Ahmad
-                Kiflan Wafi (B0522003)<br>Fahlevi Bobby Armyndo (B0523021)<br>
-                Ghifari Dilan Malikisyafa (B0523027)</div>
-            <div style="margin-bottom:8px;">
-                <span
+                Kiflan Wafi &middot; Pahlevi Bobby &middot; Ghifari Dilan</div>
+            <div><span
                     style="font-family:var(--font-mono); font-size:var(--fs-micro); text-transform:uppercase; color:var(--ink);">Dosen
-                    Pengampu</span><br>Dr. Khabibi Muhammad Luthfi, M.Hum.
-            </div>
+                    Pengampu</span><br>Khabibie Muhammad Luhfi</div>
         </div>
 
         <div class="facts">
@@ -827,9 +1092,9 @@
         </div>
     </div>
 
-    <main class="wrap">
+    <main class="wrap" id="main">
 
-        <section id="profil" class="tujuan">
+        <section id="profil" class="tujuan reveal">
             <div class="card">
                 <div class="card-head">
                     <div class="icon-badge" style="background:rgba(107,107,107,0.12); color:var(--muted);">
@@ -850,16 +1115,20 @@
                     bahasa Arab
                     di sekolah ini sejak Januari 2025 — sebelumnya ia sempat mengajar di tempat yang sama, resign, lalu
                     kembali
-                    mengajar.<span class="src">Wawancara Boby</span></p>
+                    mengajar.<span class="src" data-w="b" title="Sumber: Wawancara Boby"
+                        aria-label="Sumber: Wawancara Boby">B</span></p>
                 <p style="color:var(--muted); font-size:var(--fs-body); margin-bottom:0;">Data disusun dari dua sesi
                     wawancara
                     terpisah dengan Bu Anindita, masing-masing membahas konteks umum-target kemampuan, dan tujuan
                     kurikulum secara
                     lebih spesifik.</p>
+                <div class="legend"><span><span class="src" data-w="b">B</span>Wawancara Boby</span><span><span
+                            class="src" data-w="k">K</span>Wawancara Kiflan</span><span>Penanda ini ada di tiap
+                        temuan.</span></div>
             </div>
         </section>
 
-        <section id="formal" class="tujuan formal">
+        <section id="formal" class="tujuan formal reveal">
             <div class="card">
                 <div class="card-head">
                     <div class="icon-badge">
@@ -887,7 +1156,8 @@
                         <div>
                             <h3>Nasional</h3>
                             <p>Sejak 2026, mengikuti Kurikulum Berbasis Cinta (KBC) sesuai aturan Kementerian
-                                Agama.<span class="src">Wawancara Kiflan</span></p>
+                                Agama.<span class="src" data-w="k" title="Sumber: Wawancara Kiflan"
+                                    aria-label="Sumber: Wawancara Kiflan">K</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
@@ -896,7 +1166,8 @@
                             <h3>Institusional</h3>
                             <p>Tiga jenis kelas — Tahfidz (±25–26 siswa), MIPA (±28), Reguler (±28–31) — dengan materi
                                 bahasa Arab
-                                yang disamakan.<span class="src">Wawancara Boby</span></p>
+                                yang disamakan.<span class="src" data-w="b" title="Sumber: Wawancara Boby"
+                                    aria-label="Sumber: Wawancara Boby">B</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
@@ -908,7 +1179,8 @@
                                 Kemenag, misalnya bab tentang warna, rumah, hewan, atau kendaraan. Kelas 4–6 masuk
                                 tarkib,
                                 mubtada–khabar, kalam, dan qira'ah, dengan materi mufradat yang jauh lebih
-                                kompleks.<span class="src">Wawancara Boby</span></p>
+                                kompleks.<span class="src" data-w="b" title="Sumber: Wawancara Boby"
+                                    aria-label="Sumber: Wawancara Boby">B</span></p>
                         </div>
                     </div>
                     <div class="flow-item">
@@ -917,7 +1189,8 @@
                             <h3>Instruksional</h3>
                             <p>Penilaian memadukan tes tertulis dan praktik — misalnya menjelaskan alamat rumah lewat
                                 kitabah dan
-                                kalam.<span class="src">Wawancara Kiflan</span></p>
+                                kalam.<span class="src" data-w="k" title="Sumber: Wawancara Kiflan"
+                                    aria-label="Sumber: Wawancara Kiflan">K</span></p>
                         </div>
                     </div>
                 </div>
@@ -925,7 +1198,8 @@
                     Kurikulumnya tidak bisa diimplementasikan penuh, karena kompetensi dan kenyataan di lapangan berbeda
                     — ada
                     anak yang cepat, ada yang lambat.
-                    <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Kiflan</span></cite>
+                    <cite>Anindita, guru bahasa Arab <span class="src" data-w="k" title="Sumber: Wawancara Kiflan"
+                            aria-label="Sumber: Wawancara Kiflan">K</span></cite>
                 </div>
                 <div class="reflect"><b>Coba pikirkan</b>Menurutmu, kenapa kurikulum yang sama bisa sulit diterapkan
                     rata ke
@@ -933,7 +1207,7 @@
             </div>
         </section>
 
-        <section id="ideal" class="tujuan ideal">
+        <section id="ideal" class="tujuan ideal reveal">
             <div class="card">
                 <div class="card-head">
                     <div class="icon-badge">
@@ -968,26 +1242,29 @@
                     kelas 6 untuk persiapan ujian madrasah. Kendala terbesarnya justru di ranah afektif — minat siswa
                     masih
                     rendah.
-                    <span class="src">Wawancara Kiflan</span>
+                    <span class="src" data-w="k" title="Sumber: Wawancara Kiflan"
+                        aria-label="Sumber: Wawancara Kiflan">K</span>
                 </div>
                 <div class="quote" style="margin-top:18px;">
                     Kebanyakan anak kelas 4, 5, dan 6 sudah dilatih untuk bisa membaca bahasa Arab, tetapi ketika mereka
                     berbicara, intonasinya masih seperti membaca Al-Qur'an.
-                    <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Boby</span></cite>
+                    <cite>Anindita, guru bahasa Arab <span class="src" data-w="b" title="Sumber: Wawancara Boby"
+                            aria-label="Sumber: Wawancara Boby">B</span></cite>
                 </div>
                 <p style="color:var(--muted); font-size:var(--fs-body); margin:14px 0 0;">Kitabah sebenarnya sudah masuk
                     materi
                     dan bisa menyesuaikan kebutuhan, tapi guru lebih menekankan kalam dan qira'ah untuk kelas 4–6 —
                     karena di
                     situlah tantangan terbesarnya justru muncul: siswa bisa membaca, tapi belum benar-benar bisa
-                    "berbicara".<span class="src">Wawancara Boby</span></p>
+                    "berbicara".<span class="src" data-w="b" title="Sumber: Wawancara Boby"
+                        aria-label="Sumber: Wawancara Boby">B</span></p>
                 <div class="reflect"><b>Coba pikirkan</b>Kalau siswa sudah lancar membaca tapi belum lancar bicara,
                     keterampilan
                     apa yang sebenarnya belum tercapai?</div>
             </div>
         </section>
 
-        <section id="filosofis" class="tujuan filosofis">
+        <section id="filosofis" class="tujuan filosofis reveal">
             <div class="card">
                 <div class="card-head">
                     <div class="icon-badge">
@@ -1009,17 +1286,19 @@
                     Cukup sulit dikaitkan dengan pemahaman konteks keislaman, karena tujuan siswa di sini adalah
                     pemahaman bahasa
                     Arab secara lughowi saja.
-                    <cite>Anindita, guru bahasa Arab <span class="src">Wawancara Kiflan</span></cite>
+                    <cite>Anindita, guru bahasa Arab <span class="src" data-w="k" title="Sumber: Wawancara Kiflan"
+                            aria-label="Sumber: Wawancara Kiflan">K</span></cite>
                 </div>
                 <p style="color:var(--muted); font-size:var(--fs-body); margin:18px 0 0;">Penyisipan nilai-nilai Islam
                     bergantung pada inisiatif masing-masing guru, bukan bagian yang dirancang sistematis dalam
-                    kurikulum.<span class="src">Wawancara Boby</span></p>
+                    kurikulum.<span class="src" data-w="b" title="Sumber: Wawancara Boby"
+                        aria-label="Sumber: Wawancara Boby">B</span></p>
                 <div class="reflect"><b>Coba pikirkan</b>Apakah wajar kalau nilai keislaman dalam pelajaran bahasa Arab
                     bergantung pada masing-masing guru, bukan aturan sekolah?</div>
             </div>
         </section>
 
-        <section id="praktis" class="tujuan praktis">
+        <section id="praktis" class="tujuan praktis reveal">
             <div class="card">
                 <div class="card-head">
                     <div class="icon-badge">
@@ -1041,17 +1320,19 @@
                 <p style="color:var(--muted); font-size:var(--fs-body);">Lulusan tidak semuanya melanjutkan ke MTs atau
                     pesantren — ada juga yang masuk sekolah negeri. Targetnya sederhana: siswa MI lebih memahami
                     mufradat
-                    dibanding anak yang tidak bersekolah di madrasah.<span class="src">Wawancara Kiflan</span></p>
+                    dibanding anak yang tidak bersekolah di madrasah.<span class="src" data-w="k"
+                        title="Sumber: Wawancara Kiflan" aria-label="Sumber: Wawancara Kiflan">K</span></p>
                 <p style="color:var(--muted); font-size:var(--fs-body);">Tidak ada ekstrakurikuler khusus — hanya jam
                     tambahan
-                    materi ujian untuk kelas 6.<span class="src">Wawancara Kiflan</span></p>
+                    materi ujian untuk kelas 6.<span class="src" data-w="k" title="Sumber: Wawancara Kiflan"
+                        aria-label="Sumber: Wawancara Kiflan">K</span></p>
                 <div class="reflect"><b>Coba pikirkan</b>Kalau tidak semua lulusan lanjut ke MTs atau pesantren,
                     menurutmu
                     seberapa penting target bahasa Arab di jenjang MI ini?</div>
             </div>
         </section>
 
-        <section id="kesimpulan" class="tujuan closing">
+        <section id="kesimpulan" class="tujuan closing reveal">
             <div class="card">
                 <div class="card-head">
                     <div class="icon-badge">
@@ -1086,9 +1367,9 @@
     </main>
 
     <footer>
-        Disusun dari transkrip wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta. 2026
+        Disusun dari transkrip wawancara dengan Bu Anindita, guru bahasa Arab MI Negeri Surakarta.
         <br><br>
-        <a href="https://ahmadkiflan.github.io/pba-tujuan-modul-app/"
+        <a href="https://ahmadkiflan.github.io/pba-tujuan-modul-app/" target="_blank" rel="noopener"
             style="display:inline-block; border:1px solid var(--border-strong); color:var(--ink); border-radius:999px; padding:8px 16px; text-decoration:none;">Lihat
             modul teori PBA →</a>
     </footer>
@@ -1101,6 +1382,17 @@
     </button>
 
     <script>
+        // Reveal saat scroll (aman: konten tetap tampil bila bagian ini gagal)
+        try {
+            const revealEls = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                const revealIO = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); } });
+                }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+                revealEls.forEach(el => revealIO.observe(el));
+            } else { revealEls.forEach(el => el.classList.add('in')); }
+        } catch (err) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')); }
+
         // Dropdown menu (mobile) + animasi ikon jadi silang
         const navToggle = document.getElementById('navToggle');
         const navPill = document.getElementById('navPill');
@@ -1121,6 +1413,9 @@
         navPill.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
         document.addEventListener('click', (e) => {
             if (!navPill.contains(e.target) && !navToggle.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navPill.classList.contains('open')) { closeMenu(); navToggle.focus(); }
         });
 
         // Theme toggle (light/dark) + animasi putar ikon
@@ -1149,7 +1444,6 @@
         // Scroll-spy nav + indikator posisi + progress bar + navbar auto-hide
         const navLinks = document.querySelectorAll('.nav-pill a');
         const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-        const sectionIndicator = document.getElementById('sectionIndicator');
         const progressBar = document.getElementById('progressBar');
         const navEl = document.querySelector('.nav');
         let lastScrollY = window.scrollY;
@@ -1160,14 +1454,20 @@
             for (let i = 0; i < sections.length; i++) {
                 if (sections[i].getBoundingClientRect().top - offset <= 0) currentIndex = i;
             }
+            // di dasar halaman, bagian terakhir dianggap aktif (biasanya terlalu pendek untuk mencapai garis pemicu)
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) currentIndex = sections.length - 1;
             const currentId = sections[currentIndex] ? sections[currentIndex].id : null;
-            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + currentId));
-            if (sectionIndicator) sectionIndicator.textContent = (currentIndex + 1) + ' / ' + sections.length;
+            navLinks.forEach(a => {
+                const on = a.getAttribute('href') === '#' + currentId;
+                a.classList.toggle('active', on);
+                if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+            });
+            if (progressBar) progressBar.style.background = indicatorColors[currentId] || 'var(--ink)';
             updateNavIndicator();
         }
 
         const navIndicatorEl = document.getElementById('navIndicator');
-        const indicatorColors = { formal: 'var(--c-formal)', ideal: 'var(--c-ideal)', filosofis: 'var(--c-filosofis)', praktis: 'var(--c-praktis)' };
+        const indicatorColors = { formal: 'var(--t-formal)', ideal: 'var(--t-ideal)', filosofis: 'var(--t-filosofis)', praktis: 'var(--t-praktis)' };
         let indicatorPlaced = false;
         function updateNavIndicator(instant) {
             const active = navPill.querySelector('a.active') || navPill.querySelector('a');
@@ -1208,15 +1508,17 @@
             lastScrollY = y;
         }
 
-        // Spotlight: card yang berada di pita tengah layar ikut "menyala" saat discroll
+        // Spotlight: hanya SATU card (yang paling dekat garis tengah layar) yang menyala saat discroll
         const spotlightCards = document.querySelectorAll('.card');
         function updateSpotlight() {
-            const band = window.innerHeight * 0.5;
+            const mid = window.innerHeight * 0.5;
+            let best = null, bestD = Infinity;
             spotlightCards.forEach(card => {
                 const r = card.getBoundingClientRect();
-                const inBand = r.top < band && r.bottom > band * 0.55;
-                card.classList.toggle('spotlight', inBand);
+                const d = mid < r.top ? r.top - mid : (mid > r.bottom ? mid - r.bottom : 0);
+                if (d < bestD) { bestD = d; best = card; }
             });
+            spotlightCards.forEach(card => card.classList.toggle('spotlight', card === best && bestD < window.innerHeight * 0.3));
         }
 
         let ticking = false;
@@ -1234,7 +1536,7 @@
         window.addEventListener('scroll', () => {
             btt.classList.toggle('show', window.scrollY > 480);
         });
-        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
     </script>
 
 </body>
